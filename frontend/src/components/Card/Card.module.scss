@@ -1,0 +1,96 @@
+@use '../../styles/color' as C;
+
+.card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: flex-start;
+
+  .title {
+    margin: 0 0 0 8px; 
+    flex: 1;
+    font-size: 1.5em;
+  }
+
+  .titleInput {
+    flex: 1;
+    font-size: 1.5em; /* 필요에 따라 글꼴 크기를 조정할 수 있음 */
+    margin: 0 0 0 8px;
+    padding: 4px;
+  }
+
+  button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+  }
+}
+
+.description {
+  margin: 16px 0;
+  p {
+    margin: 0;
+    cursor: pointer;
+  }
+  input {
+    width: 100%;
+    padding: 4px;
+    font-size: 1em;
+  }
+}
+
+hr {
+  margin: 16px 0;
+}
+
+.tasks {
+  .task {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    input {
+      margin-right: 8px;
+    }
+    .completed {
+      text-decoration: line-through;
+    }
+    button {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: red;
+      cursor: pointer;
+    }
+  }
+}
+
+.addTask {
+  display: flex;
+  margin-top: 16px;
+  input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  button {
+    padding: 8px 16px;
+    border: none;
+    background-color: C.$purple;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+}

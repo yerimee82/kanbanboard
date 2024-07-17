@@ -1,0 +1,57 @@
+@use "./color" as C;
+
+html {
+  font:
+    400 62.5%/1.5 Pretendard Variable,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 100%;
+  font-size: 1.6rem;
+  background: C.$lightblue;
+}
+
+#root {
+  position: relative;
+  height: 100%;
+}
+
+.status-cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  margin-top: 24px;
+}
+
+.kanban-board {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+  margin-top: 16px;
+}
+
+.card-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 30%;
+}
+
+.card-column h1 {
+  font-weight: 500;
+  color: #3b414c;
+  font-size: 20px;
+  margin-bottom: 16px;
+}

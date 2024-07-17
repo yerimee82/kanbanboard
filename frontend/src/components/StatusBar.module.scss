@@ -1,0 +1,48 @@
+@use "../styles/color" as C;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+  min-width: 320px; 
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &.red {
+    background-color: C.$red;
+  }
+
+  &.orange {
+    background-color: C.$orange;
+  }
+
+  &.green {
+    background-color: C.$green;
+  }
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  color: C.$gray;
+  text-transform: uppercase;
+  letter-spacing: 2.4px;
+}
+
+.count {
+  color: C.$gray;
+  opacity: 0.5;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  fill: C.$purple;
+  flex-shrink: 0;
+  margin-left: auto;
+}

@@ -1,0 +1,31 @@
+@use '../styles/color' as C;
+
+.header {
+  background-color: C.$white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  color: C.$black;
+}
+
+.button {
+  background-color: C.$purple;
+  color: C.$white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.plusIcon {
+  margin-right: 5px;
+  font-size: 18px;
+}
