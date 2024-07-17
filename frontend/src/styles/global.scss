@@ -27,31 +27,8 @@ body {
   height: 100%;
 }
 
-.status-cards {
+.boardContainer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 32px;
-  margin-top: 24px;
-}
-
-.kanban-board {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 32px;
-  margin-top: 16px;
-}
-
-.card-column {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 30%;
-}
-
-.card-column h1 {
-  font-weight: 500;
-  color: #3b414c;
-  font-size: 20px;
-  margin-bottom: 16px;
+  padding: 20px;
 }

@@ -6,7 +6,6 @@ import styles from './Card.module.scss';
 const Card: React.FC<CardProps> = ({ title, description, titleWeight = 'normal' }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [newTask, setNewTask] = useState('');
   const [editDescription, setEditDescription] = useState(false);
   const [currentDescription, setCurrentDescription] = useState(description);
   const [editTitle, setEditTitle] = useState(false);

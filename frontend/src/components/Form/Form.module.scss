@@ -1,0 +1,71 @@
+@use '../../styles/color' as C;
+
+.roundBox {
+    padding: 10px;
+    max-height: 600px; /* 최대 높이를 설정 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto; /* 높이가 초과되면 스크롤 가능하게 설정 */
+}
+
+.inputField {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    font-size: 14px;
+    color: #5A5A5A;
+    margin-bottom: 5px;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+}
+
+.textarea {
+    height: 100px;
+}
+
+.removeButton {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px; 
+}
+
+.selectField {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    font-size: 14px;
+    color: #5A5A5A;
+    margin-bottom: 5px;
+}
+
+.select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    background-color: white;
+}
