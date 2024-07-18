@@ -4,26 +4,39 @@ import './styles/global.scss'
 import StatusBar from './components/StatusBar'
 import Card from './components/Card/Card'
 import KanbanList from './components/KanbanList'
+import useTaskStore from './store/useTaskStore';
 
 
 function App() {
+  const tasks = useTaskStore((state) => state.tasks);
+
+  const pendingTasks = tasks.filter(task => task.status === 'pending');
+  const inProgressTasks = tasks.filter(task => task.status === 'inProgress');
+  const completedTasks = tasks.filter(task => task.status === 'completed');
+
 
   return (
     <>
-      <Header/>
+      <Header />
       <div className="boardContainer">
-      <KanbanList>
-        <StatusBar color="red" title="Pending" count={1} />
-        <Card title="Test" description="안녕하세요" />
-      </KanbanList>
-      <KanbanList>
-        <StatusBar color="orange" title="In Progress" count={2} />
-        <Card title="Test 2" description="진행 중입니다" />
-      </KanbanList>
-      <KanbanList>
-        <StatusBar color="green" title="Completed" count={3} />
-        <Card title="Test 3" description="완료되었습니다" />
-      </KanbanList>
+        <KanbanList>
+          <StatusBar color="red" title="Pending" count={pendingTasks.length} />
+          {pendingTasks.map(task => (
+            <Card key={task.id} title={task.title} description={task.description} />
+          ))}
+        </KanbanList>
+        <KanbanList>
+          <StatusBar color="orange" title="In Progress" count={inProgressTasks.length} />
+          {inProgressTasks.map(task => (
+            <Card key={task.id} title={task.title} description={task.description} />
+          ))}
+        </KanbanList>
+        <KanbanList>
+          <StatusBar color="green" title="Completed" count={completedTasks.length} />
+          {completedTasks.map(task => (
+            <Card key={task.id} title={task.title} description={task.description} />
+          ))}
+        </KanbanList>
       </div>
     </>
   )

@@ -25,7 +25,7 @@ const Header = () => {
         overlayClassName={modalStyles.modalOverlay}
         ariaHideApp={false}
       >
-        <Form />
+        <Form onClose={closeModal} />
       </Modal>
     </>
   );
