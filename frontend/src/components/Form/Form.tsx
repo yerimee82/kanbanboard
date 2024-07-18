@@ -45,7 +45,10 @@ const Form = () => {
           onRemove={() => handleRemoveSubtask(subtask.id)}
         />
       ))}
-      <Button onClick={handleAddSubtask} color="pink">
+      <Button onClick={handleAddSubtask} 
+        color="#635FC7"
+        backgroundColor="#F4F7FD"
+        >
         Add New Subtask
       </Button>
       <DropDown
@@ -57,7 +60,7 @@ const Form = () => {
           { value: "completed", label: "Completed", color: "green" },
         ]}
       />
-      <Button onClick={temp} color="gray">
+      <Button onClick={temp} color="#FFFFFF" backgroundColor="#635FC7">
         Create Task
       </Button>
     </div>

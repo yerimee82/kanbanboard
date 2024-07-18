@@ -5,14 +5,15 @@ interface ButtonProds {
     onClick: () => void;
     children: React.ReactNode;
     color?: string;
+    backgroundColor?: string;
 }
 
-const Button:React.FC<ButtonProds> = ({ onClick, children, color }) => {
+const Button:React.FC<ButtonProds> = ({ onClick, children, color, backgroundColor }) => {
   return (
     <button
       type="button"
-      className={styles.addButton}
-      style={{ backgroundColor: color }}
+      className={styles.button}
+      style={{ color, backgroundColor }}
       onClick={onClick}
     >
       {children}
