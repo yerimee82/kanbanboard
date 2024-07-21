@@ -1,0 +1,116 @@
+# spring configuration
+spring:
+  application:
+    name: kanbanboard
+  profiles:
+    active: development
+
+---
+# common configuration
+spring:
+  mvc:
+    static-path-pattern: /assets/**
+    throw-exception-if-no-handler-found: true
+
+  web:
+    resources:
+      static-locations: classpath:/assets/
+
+  thymeleaf:
+    check-template-location: true
+    enable-spring-el-compiler: true
+    mode: HTML
+    prefix: classpath:templates/
+    suffix : .html
+
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+      path: /error
+
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+
+
+---
+#DB Configuration
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/kanbanboard
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+#        show_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+
+
+---
+# development configuration
+spring:
+  config:
+    activate:
+      on-profile: development
+
+  devtools:
+    livereload:
+      enabled: true
+
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8080
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"
+  level:
+    root: info
+
+
+
+
+---
+# production configuration
+spring:
+  config:
+    activate:
+      on-profile: production
+
+  thymeleaf:
+    cache: true
+
+server:
+  port: 8085
+
+logging:
+  pattern:
+    file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"
+  logback:
+    rollingpolicy:
+      file-name-pattern: "logs/${spring.application.name}.%d{yyyy-MM-dd}.%i.log.zip"
+      max-file-size: 10MB
+      max-history: 10
+  file:
+    name: logs/${spring.application.name}.log
+  level:
+    root: WARN
+    com:
+      poscodx:
+        emaillist:
+          exception: ERROR
