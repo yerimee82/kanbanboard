@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Task } from './types';
+import { Subtask } from '../../store/types';
 import TaskItem from './TaskItem';
 import styles from './Card.module.scss';
 
 interface TaskListProps {
-  tasks: Task[];
+  tasks: Subtask[];
   onToggle: (id: number) => void;
   onDelete: (id: number) => void;
   onAdd: (text: string) => void;

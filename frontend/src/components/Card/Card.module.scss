@@ -50,8 +50,10 @@
   }
 }
 
-hr {
-  margin: 16px 0;
+.dashedLine {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 10px 0; 
 }
 
 .tasks {

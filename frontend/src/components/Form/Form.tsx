@@ -4,11 +4,7 @@ import InputField from "./InputField";
 import Button from "./Button";
 import DropDown from "./DropDown";
 import useTaskStore from "../../store/useTaskStore";
-
-interface Subtask {
-  id: string;
-  text: string;
-}
+import { Subtask } from "../../store/types";
 
 interface FormProps {
   onClose: () => void;
@@ -22,18 +18,19 @@ const Form: React.FC<FormProps> = ({ onClose }) => {
   const addTask = useTaskStore((state) => state.addTask);
 
   const handleAddSubtask = () => {
-    setSubtasks([...subtasks, { id: `subtask-${subtasks.length}`, text: '' }]);
+    setSubtasks([...subtasks, { id: Date.now(), text: '', completed: false }]);
   };
 
-  const handleRemoveSubtask = (id: string) => {
+  const handleRemoveSubtask = (id: number) => {
     setSubtasks(subtasks.filter((subtask) => subtask.id !== id));
   };
 
-  const handleSubtaskChange = (id: string, text: string) => {
+  const handleSubtaskChange = (id: number, text: string) => {
     setSubtasks(subtasks.map((subtask) => subtask.id === id ? { ...subtask, text } : subtask));
   };
 
   const handleCreateTask = () => {
+    if (!title.trim() || !description.trim()) return;
     addTask(title, description, status, subtasks);
     setTitle('');
     setDescription('');
@@ -65,10 +62,10 @@ const Form: React.FC<FormProps> = ({ onClose }) => {
       {subtasks.map((subtask) => (
         <InputField
           key={subtask.id}
-          id={subtask.id}
+          id={subtask.id.toString()}
           label=""
           type="text"
-          placeholder="e.g. Take a break"
+          placeholder="예시) 밥 먹기"
           value={subtask.text}
           onChange={(e) => handleSubtaskChange(subtask.id, e.target.value)}
           onRemove={() => handleRemoveSubtask(subtask.id)}

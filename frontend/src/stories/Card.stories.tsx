@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import Card from '../components/Card/Card';
-import { CardProps } from '../components/Card/types';
+import { CardProps } from '../store/types';
 
 export default {
   title: 'Components/Card',

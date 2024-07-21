@@ -1,17 +1,5 @@
 import create from 'zustand';
-
-interface Subtask {
-  id: string;
-  text: string;
-}
-
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  status: 'pending' | 'inProgress' | 'completed';
-  subtasks: Subtask[];
-}
+import { Task, Subtask } from './types';
 
 interface TaskStore {
   tasks: Task[];
@@ -23,7 +11,7 @@ const useTaskStore = create<TaskStore>((set) => ({
   addTask: (title, description, status, subtasks) => set((state) => ({
     tasks: [
       ...state.tasks,
-      { id: Date.now(), title, description, status, subtasks }
+      { id: Date.now(), title, description, status, subtasks: subtasks.map(subtask => ({ ...subtask, completed: false })) }
     ]
   }))
 }));

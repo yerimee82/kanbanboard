@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import TaskList from './TaskList';
-import { CardProps, Task } from './types';
+import { CardProps, Subtask } from '../../store/types';
 import styles from './Card.module.scss';
 
-const Card: React.FC<CardProps> = ({ title, description, titleWeight = 'normal' }) => {
+const Card: React.FC<CardProps> = ({ title, description, subtasks, titleWeight = 'normal' }) => {
   const [isOpen, setIsOpen] = useState(true);
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Subtask[]>(subtasks);
   const [editDescription, setEditDescription] = useState(false);
   const [currentDescription, setCurrentDescription] = useState(description);
   const [editTitle, setEditTitle] = useState(false);
@@ -37,6 +37,18 @@ const Card: React.FC<CardProps> = ({ title, description, titleWeight = 'normal' 
     }
   };
 
+  const handleTitleBlur = () => {
+    if (currentTitle.trim()) {
+      setEditTitle(false);
+    }
+  };
+
+  const handleDescriptionBlur = () => {
+    if (currentDescription.trim()) {
+      setEditDescription(false);
+    }
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -48,8 +60,8 @@ const Card: React.FC<CardProps> = ({ title, description, titleWeight = 'normal' 
             type="text"
             value={currentTitle}
             onChange={(e) => setCurrentTitle(e.target.value)}
-            onBlur={() => setEditTitle(false)}
-            onKeyDown={(e) => handleKeyDown(e, () => setEditTitle(false))}
+            onBlur={handleTitleBlur}
+            onKeyDown={(e) => handleKeyDown(e, handleTitleBlur)}
             autoFocus
             className={styles.titleInput}
           />
@@ -59,7 +71,7 @@ const Card: React.FC<CardProps> = ({ title, description, titleWeight = 'normal' 
             style={{ fontWeight: titleWeight }}
             onClick={() => setEditTitle(true)}
           >
-            {currentTitle}
+            {currentTitle || 'No Title'}
           </span>
         )}
       </div>
@@ -69,15 +81,15 @@ const Card: React.FC<CardProps> = ({ title, description, titleWeight = 'normal' 
             type="text"
             value={currentDescription}
             onChange={(e) => setCurrentDescription(e.target.value)}
-            onBlur={() => setEditDescription(false)}
-            onKeyDown={(e) => handleKeyDown(e, () => setEditDescription(false))}
+            onBlur={handleDescriptionBlur}
+            onKeyDown={(e) => handleKeyDown(e, handleDescriptionBlur)}
             autoFocus
           />
         ) : (
-          <p onClick={() => setEditDescription(true)}>{currentDescription}</p>
+          <p onClick={() => setEditDescription(true)}>{currentDescription || 'No Description'}</p>
         )}
       </div>
-      <hr />
+      <div className={styles.dashedLine}></div>
       {isOpen && (
         <TaskList
           tasks={tasks}

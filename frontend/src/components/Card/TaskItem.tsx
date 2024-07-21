@@ -1,9 +1,9 @@
 import React from 'react';
-import { Task } from './types';
+import { Subtask } from '../../store/types';
 import styles from './Card.module.scss';
 
 interface TaskItemProps {
-  task: Task;
+  task: Subtask;
   onToggle: (id: number) => void;
   onDelete: (id: number) => void;
 }
